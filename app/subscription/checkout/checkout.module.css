@@ -1,0 +1,120 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.content {
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.badge {
+  color: rgba(163, 163, 163, 1);
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+.title {
+  color: white;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+}
+
+.priceSection {
+  margin-bottom: 2rem;
+}
+
+.priceLabel {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  color: rgba(209, 209, 209, 1);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  max-width: 580px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.promoSection {
+  margin-bottom: 2.5rem;
+}
+
+.promoLabel {
+  color: white;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  text-align: left;
+}
+
+.promoInput {
+  width: 100%;
+  background: rgba(58, 58, 63, 1);
+  border: 1px solid rgba(70, 70, 75, 1);
+  border-radius: 0.75rem;
+  padding: 1rem 1rem 1rem 3rem;
+  color: rgba(163, 163, 163, 1);
+  font-size: 0.9375rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.promoInput:focus {
+  border-color: rgba(100, 100, 105, 1);
+}
+
+.promoInputWrapper {
+  position: relative;
+}
+
+.promoIcon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(163, 163, 163, 1);
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.checkoutButton {
+  background: rgba(196, 174, 182, 1);
+  color: rgba(24, 24, 26, 1);
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0.875rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkoutButton:hover {
+  background: rgba(206, 184, 192, 1);
+}
+
+@media (min-width: 640px) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .priceLabel {
+    font-size: 3rem;
+  }
+}

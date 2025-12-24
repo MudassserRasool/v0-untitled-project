@@ -1,0 +1,350 @@
+.container {
+  min-height: 100vh;
+  padding: 1.5rem;
+}
+
+.header {
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+}
+
+.backButton {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  transition: opacity 0.2s;
+}
+
+.backButton:hover {
+  opacity: 0.8;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.orderSummary {
+  background: rgba(42, 42, 47, 1);
+  border: 1px solid rgba(60, 60, 65, 1);
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.summaryHeader {
+  margin-bottom: 1.5rem;
+}
+
+.summarySubtitle {
+  color: rgba(163, 163, 163, 1);
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.summaryTitle {
+  color: white;
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.summaryPrice {
+  color: rgba(209, 209, 209, 1);
+  font-size: 0.9375rem;
+}
+
+.summaryDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(60, 60, 65, 1);
+}
+
+.summaryLabel {
+  color: white;
+  font-size: 0.9375rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.summaryValue {
+  color: white;
+  font-size: 0.9375rem;
+}
+
+.summaryValueMuted {
+  color: rgba(163, 163, 163, 1);
+  font-size: 0.875rem;
+}
+
+.summaryTotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.summaryTotalLabel {
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.summaryTotalValue {
+  color: white;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.paymentSection {
+  background: rgba(42, 42, 47, 1);
+  border: 1px solid rgba(60, 60, 65, 1);
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.paymentTitle {
+  color: white;
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.paymentMethodCard {
+  background: linear-gradient(180deg, #26252a 0%, #463e4b 100%);
+  border: 1px solid rgba(79, 79, 79, 0.5);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.paymentOption {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.paymentOption:hover {
+  opacity: 0.8;
+}
+
+.radio {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  border: 2px solid rgba(163, 163, 163, 1);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.radioSelected {
+  border-color: white;
+}
+
+.radioSelected::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+  background: white;
+}
+
+.paymentOptionLabel {
+  color: white;
+  font-size: 0.9375rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cardForm {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+.cardFormLabel {
+  color: rgba(209, 209, 209, 1);
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.cardInputWrapper {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(100, 100, 105, 0.5);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.cardInputRow {
+  display: flex;
+  width: 100%;
+}
+
+.cardInputRowSplit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid rgba(100, 100, 105, 0.5);
+}
+
+.cardInput {
+  background: transparent;
+  border: none;
+  padding: 0.875rem 1rem;
+  color: rgba(163, 163, 163, 1);
+  font-size: 0.9375rem;
+  outline: none;
+  width: 100%;
+  transition: background 0.2s;
+}
+
+.cardInput:focus {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.cardInput::placeholder {
+  color: rgba(163, 163, 163, 1);
+}
+
+.cardInputRowSplit .cardInput:first-child {
+  border-right: 1px solid rgba(100, 100, 105, 0.5);
+}
+
+.cardLogos {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.inlineCheckbox {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.checkboxInput {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  accent-color: rgba(196, 174, 182, 1);
+  cursor: pointer;
+}
+
+.checkboxLabel {
+  color: rgba(209, 209, 209, 1);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
+.saveInfoCard {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(180deg, #26252a 0%, #463e4b 100%);
+  border: 1px solid rgba(79, 79, 79, 0.5);
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
+.checkboxDescription {
+  color: rgba(163, 163, 163, 1);
+  font-size: 0.8125rem;
+  margin-top: 0.25rem;
+}
+
+.subscribeButton {
+  width: 100%;
+  background: rgba(196, 174, 182, 1);
+  color: rgba(24, 24, 26, 1);
+  border: none;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 1.5rem;
+}
+
+.subscribeButton:hover {
+  background: rgba(206, 184, 192, 1);
+}
+
+.footer {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.footerText {
+  color: rgba(163, 163, 163, 1);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+
+.footerLinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footerLink {
+  color: rgba(163, 163, 163, 1);
+  font-size: 0.8125rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footerLink:hover {
+  color: white;
+}
+
+.stripeLogo {
+  color: white;
+  font-weight: 600;
+}
+
+@media (min-width: 1024px) {
+  .content {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cardInputRow {
+    grid-template-columns: 1fr 1fr;
+  }
+}
