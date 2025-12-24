@@ -1,7 +1,7 @@
 'use client';
 
+import { AuthButton } from '@/components/auth/auth-button';
 import AppLayout from '@/components/layouts/app-layout';
-import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 
 export default function WelcomePage() {
@@ -14,20 +14,6 @@ export default function WelcomePage() {
   return (
     <AppLayout>
       <div className="flex flex-col items-center justify-between min-h-screen px-4 py-8 sm:py-12 md:py-16">
-        {/* Header */}
-        <div className="w-full max-w-md text-center pt-4 sm:pt-8">
-          <h1
-            className="text-white text-2xl sm:text-3xl md:text-4xl"
-            style={{
-              fontFamily: 'Avenir Next, sans-serif',
-              fontWeight: 600,
-              letterSpacing: '0.5px',
-            }}
-          >
-            Train F1
-          </h1>
-        </div>
-
         {/* Center Content */}
         <div className="flex flex-col items-center justify-center flex-1 w-full max-w-md space-y-6 sm:space-y-8 md:space-y-12">
           {/* F1 Logo */}
@@ -63,7 +49,7 @@ export default function WelcomePage() {
 
           {/* Subtext */}
           <p
-            className="text-[#a3a3a3] text-sm sm:text-base md:text-lg text-center max-w-sm px-4"
+            className="text-[#a3a3a3] text-sm sm:text-base md:text-lg text-center  "
             style={{
               fontFamily: 'Avenir Next, sans-serif',
               fontWeight: 400,
@@ -74,18 +60,7 @@ export default function WelcomePage() {
           </p>
 
           {/* Begin Button */}
-          <Button
-            onClick={handleBegin}
-            className="w-full max-w-sm h-12 sm:h-14 rounded-xl text-black font-semibold transition-all hover:opacity-90 active:scale-[0.98] text-base sm:text-lg"
-            style={{
-              background: 'linear-gradient(135deg, #c4aeb6 0%, #d4a5a5 100%)',
-              boxShadow: '0px 4px 12px rgba(196, 174, 182, 0.3)',
-              fontFamily: 'Avenir Next, sans-serif',
-              fontWeight: 600,
-            }}
-          >
-            Begin
-          </Button>
+          <AuthButton onClick={handleBegin}>Begin</AuthButton>
         </div>
 
         {/* Bottom Spacer */}

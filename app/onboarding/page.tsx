@@ -97,25 +97,10 @@ export default function OnboardingPage() {
 
   return (
     <AppLayout>
-      {/* Header */}
-      <div className="pt-12 pb-8 text-center">
-        <h1
-          className="text-white"
-          style={{
-            fontFamily: 'Avenir Next, sans-serif',
-            fontWeight: 600,
-            fontSize: '32px',
-            letterSpacing: '0.5px',
-          }}
-        >
-          Train F1
-        </h1>
-      </div>
-
       {/* Step indicator */}
       <div className="text-center mb-12">
         <p
-          className="text-[rgba(196,174,182,1)]"
+          className="text-[#C9A17B]"
           style={{
             fontFamily: 'Avenir Next, sans-serif',
             fontWeight: 500,
@@ -131,7 +116,7 @@ export default function OnboardingPage() {
         <div
           className="w-full max-w-255 rounded-3xl p-12"
           style={{
-            background: 'rgba(46, 43, 54, 0.5)',
+            background: 'linear-gradient(180deg, #26252A 0%, #463E4B 100%)',
             backdropFilter: 'blur(20px)',
             border: '1px solid rgba(255, 255, 255, 0.1)',
           }}
@@ -195,15 +180,15 @@ export default function OnboardingPage() {
                           border: '2px solid rgba(196, 174, 182, 0.5)',
                         }}
                       >
-                        <IconComponent className="w-8 h-8 text-[rgba(196,174,182,1)]" />
+                        <IconComponent className="w-8 h-8 text-black" />
                       </div>
                       <p
                         className="text-white/80 text-center max-w-30"
                         style={{
                           fontFamily: 'Avenir Next, sans-serif',
                           fontWeight: 400,
-                          fontSize: '14px',
-                          lineHeight: '140%',
+                          fontSize: '16px',
+                          lineHeight: '160%',
                         }}
                       >
                         {feature.label}
@@ -248,7 +233,7 @@ export default function OnboardingPage() {
                   <button
                     key={index}
                     onClick={() => setSelectedOption(option)}
-                    className="w-full text-left p-6 rounded-xl transition-all hover:border-[rgba(196,174,182,0.5)]"
+                    className="w-full text-left p-4 rounded-lg transition-all hover:border-[rgba(196,174,182,0.5)] cursor-pointer"
                     style={{
                       background:
                         selectedOption === option
@@ -262,7 +247,7 @@ export default function OnboardingPage() {
                   >
                     <div className="flex items-center gap-4">
                       <div
-                        className="w-6 h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0"
+                        className="w-6 h-6 rounded-full border-2 flex items-center justify-center shrink-0"
                         style={{
                           borderColor:
                             selectedOption === option
@@ -270,14 +255,19 @@ export default function OnboardingPage() {
                               : 'rgba(255, 255, 255, 0.3)',
                         }}
                       >
-                        {selectedOption === option && (
-                          <div
-                            className="w-3 h-3 rounded-full"
-                            style={{
-                              background: 'rgba(196, 174, 182, 1)',
-                            }}
-                          />
-                        )}
+                        <div
+                          className="w-3 h-3 rounded-full border-2"
+                          style={{
+                            borderColor:
+                              selectedOption === option
+                                ? 'rgba(196, 174, 182, 1)'
+                                : 'rgba(255, 255, 255, 0.3)',
+                            background:
+                              selectedOption === option
+                                ? 'rgba(196, 174, 182, 1)'
+                                : 'transparent',
+                          }}
+                        />
                       </div>
                       <span
                         className="text-white"
@@ -298,7 +288,7 @@ export default function OnboardingPage() {
                 <button
                   onClick={handleNext}
                   disabled={!selectedOption}
-                  className="h-[52px] px-12 rounded-xl text-black font-semibold transition-all hover:opacity-90 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="h-13 px-12 rounded-xl text-black font-semibold transition-all hover:opacity-90 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
                   style={{
                     background: 'rgba(196, 174, 182, 1)',
                     boxShadow:

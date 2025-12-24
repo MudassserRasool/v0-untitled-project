@@ -8,7 +8,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local('Avenir Next Regular'), local('AvenirNext-Regular');
+  src: url('../public/fonts/AvenirNextCyr-Regular.woff2') format('woff2');
 }
 
 @font-face {
@@ -17,6 +17,15 @@
   font-weight: 600;
   font-display: swap;
   src: local('Avenir Next Demi Bold'), local('AvenirNext-DemiBold');
+}
+
+/* add Orpheus Pro font */
+
+@font-face {
+  font-family: 'Orpheus Pro';
+  src: url('../public/fonts/Orpheus Pro.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
 }
 
 :root {
@@ -98,8 +107,8 @@
 }
 
 @theme inline {
-  --font-sans: 'Avenir Next', 'Geist', 'Geist Fallback', ui-sans-serif,
-    system-ui, sans-serif;
+  --font-sans: 'Avenir Next', 'Orpheus Pro', 'Geist', 'Geist Fallback',
+    ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'Geist Mono', 'Geist Mono Fallback';
   --color-background: var(--background);
   --color-foreground: var(--foreground);

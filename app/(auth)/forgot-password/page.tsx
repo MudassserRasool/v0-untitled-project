@@ -3,11 +3,22 @@
 import type React from 'react';
 
 import { AuthButton } from '@/components/auth/auth-button';
+import { AuthInput } from '@/components/auth/auth-input';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 export default function ForgotPasswordPage() {
   const router = useRouter();
+  const [formData, setFormData] = useState({ email: '' });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,7 +52,7 @@ export default function ForgotPasswordPage() {
             letterSpacing: '0%',
           }}
         >
-          Update Password?
+          Forget Password?
         </h1>
 
         {/* Description */}
@@ -61,30 +72,14 @@ export default function ForgotPasswordPage() {
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-8">
           {/* Email Input */}
-          <div>
-            <label
-              className="block text-white/90 mb-3"
-              style={{
-                fontFamily: 'Avenir Next, sans-serif',
-                fontWeight: 400,
-                fontSize: '16px',
-              }}
-            >
-              Email <span className="text-red-400">*</span>
-            </label>
-            <input
-              type="email"
-              placeholder="johndoe@gmail.com"
-              required
-              className="w-[431px] h-[70px] px-6 rounded-2xl text-white placeholder:text-white/40 outline-none transition-all focus:ring-2 focus:ring-white/20 border-2 border-white/10"
-              style={{
-                background: 'rgba(79, 79, 79, 1)',
-                fontFamily: 'Avenir Next, sans-serif',
-                fontWeight: 400,
-                fontSize: '16px',
-              }}
-            />
-          </div>
+
+          <AuthInput
+            type="email"
+            placeholder="Enter your email"
+            value={formData.email}
+            onChange={handleInputChange}
+            name="email"
+          />
 
           {/* Continue Button */}
           <AuthButton type="submit">Continue</AuthButton>

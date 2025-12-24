@@ -3,16 +3,25 @@
 import type React from 'react';
 
 import { AuthButton } from '@/components/auth/auth-button';
-import { Eye, EyeOff } from 'lucide-react';
+import { AuthInput } from '@/components/auth/auth-input';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export default function ResetPasswordPage() {
   const router = useRouter();
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [formData, setFormData] = useState({
+    password: '',
+    confirmPassword: '',
+  });
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     router.push('/success');
@@ -64,85 +73,25 @@ export default function ResetPasswordPage() {
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* New Password Input */}
-          <div>
-            <label
-              className="block text-white/90 mb-3"
-              style={{
-                fontFamily: 'Avenir Next, sans-serif',
-                fontWeight: 400,
-                fontSize: '16px',
-              }}
-            >
-              New Password <span className="text-red-400">*</span>
-            </label>
-            <div className="relative">
-              <input
-                type={showPassword ? 'text' : 'password'}
-                placeholder="Enter new password"
-                required
-                className="w-107.75 h-17.5 px-6 pr-16 rounded-2xl text-white placeholder:text-white/40 outline-none transition-all focus:ring-2 focus:ring-white/20 border-2 border-white/10"
-                style={{
-                  background: 'rgba(79, 79, 79, 1)',
-                  fontFamily: 'Avenir Next, sans-serif',
-                  fontWeight: 400,
-                  fontSize: '16px',
-                }}
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-6 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition-colors"
-                style={{
-                  border: '1.5px solid rgba(5, 9, 20, 0.6)',
-                  borderRadius: '6px',
-                  padding: '8px',
-                }}
-              >
-                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-              </button>
-            </div>
-          </div>
+          {/* Password Input */}
+          <AuthInput
+            type="password"
+            placeholder="Enter your  new password"
+            showToggle
+            value={formData.password}
+            onChange={handleInputChange}
+            name="password"
+          />
 
           {/* Confirm Password Input */}
-          <div>
-            <label
-              className="block text-white/90 mb-3"
-              style={{
-                fontFamily: 'Avenir Next, sans-serif',
-                fontWeight: 400,
-                fontSize: '16px',
-              }}
-            >
-              Confirm Password <span className="text-red-400">*</span>
-            </label>
-            <div className="relative">
-              <input
-                type={showConfirmPassword ? 'text' : 'password'}
-                placeholder="Confirm new password"
-                required
-                className="w-[431px] h-[70px] px-6 pr-16 rounded-2xl text-white placeholder:text-white/40 outline-none transition-all focus:ring-2 focus:ring-white/20 border-2 border-white/10"
-                style={{
-                  background: 'rgba(79, 79, 79, 1)',
-                  fontFamily: 'Avenir Next, sans-serif',
-                  fontWeight: 400,
-                  fontSize: '16px',
-                }}
-              />
-              <button
-                type="button"
-                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className="absolute right-6 top-1/2 -translate-y-1/2 text-white/60 hover:text-white transition-colors"
-                style={{
-                  border: '1.5px solid rgba(5, 9, 20, 0.6)',
-                  borderRadius: '6px',
-                  padding: '8px',
-                }}
-              >
-                {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-              </button>
-            </div>
-          </div>
+          <AuthInput
+            type="password"
+            placeholder="Confirm your new password"
+            showToggle
+            value={formData.confirmPassword}
+            onChange={handleInputChange}
+            name="confirmPassword"
+          />
 
           {/* Reset Button */}
           <div className="pt-6">

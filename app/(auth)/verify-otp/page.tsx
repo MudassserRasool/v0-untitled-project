@@ -3,6 +3,7 @@
 import type React from 'react';
 
 import { AuthButton } from '@/components/auth/auth-button';
+import { Input } from '@/components/ui/input';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
@@ -17,16 +18,47 @@ export default function VerifyOtpPage() {
   }, []);
 
   const handleChange = (index: number, value: string) => {
-    if (value.length > 1) value = value[0];
+    // Handle paste
+    if (value.length > 1) {
+      const digits = value.slice(0, 6).split('');
+      const newOtp = [...otp];
+      digits.forEach((digit, i) => {
+        if (index + i < 6) {
+          newOtp[index + i] = digit;
+        }
+      });
+      setOtp(newOtp);
+      // Focus last filled input
+      const lastIndex = Math.min(index + digits.length - 1, 5);
+      inputRefs.current[lastIndex]?.focus();
+      return;
+    }
 
     const newOtp = [...otp];
     newOtp[index] = value;
     setOtp(newOtp);
 
-    // Move to next input
     if (value && index < 5) {
       inputRefs.current[index + 1]?.focus();
     }
+  };
+
+  const handlePaste = (e: React.ClipboardEvent) => {
+    e.preventDefault();
+    const pastedData = e.clipboardData.getData('text').slice(0, 6);
+    const digits = pastedData.split('');
+    const newOtp = [...otp];
+
+    digits.forEach((digit, i) => {
+      if (i < 6) {
+        newOtp[i] = digit;
+      }
+    });
+
+    setOtp(newOtp);
+    // Focus last filled input or last input
+    const lastIndex = Math.min(digits.length - 1, 5);
+    inputRefs.current[lastIndex]?.focus();
   };
 
   const handleKeyDown = (index: number, e: React.KeyboardEvent) => {
@@ -42,7 +74,7 @@ export default function VerifyOtpPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-8">
-      <div className="w-[431px]">
+      <div className="w-107.75">
         {/* Logo */}
         <div className="mb-12 flex justify-center">
           <div className="w-16 h-16 rounded-xl flex items-center justify-center">
@@ -60,14 +92,13 @@ export default function VerifyOtpPage() {
         <h1
           className="text-white mb-6"
           style={{
-            fontFamily: 'Avenir Next, sans-serif',
             fontWeight: 600,
             fontSize: '42px',
             lineHeight: '54px',
             letterSpacing: '0%',
           }}
         >
-          Enter OTP
+          Verify OTP
         </h1>
 
         {/* Description */}
@@ -81,7 +112,7 @@ export default function VerifyOtpPage() {
             letterSpacing: '0.4%',
           }}
         >
-          Please enter your phone number to receive the OTP.
+          Enter the 6-digit code sent to your email.
         </p>
 
         {/* Form */}
@@ -89,7 +120,7 @@ export default function VerifyOtpPage() {
           {/* OTP Inputs */}
           <div className="flex gap-3 justify-between">
             {otp.map((digit, index) => (
-              <input
+              <Input
                 key={index}
                 ref={(el) => {
                   inputRefs.current[index] = el;
@@ -97,10 +128,11 @@ export default function VerifyOtpPage() {
                 type="text"
                 inputMode="numeric"
                 maxLength={1}
+                onPaste={handlePaste} // Add this line
                 value={digit}
                 onChange={(e) => handleChange(index, e.target.value)}
                 onKeyDown={(e) => handleKeyDown(index, e)}
-                className="w-[60px] h-[60px] text-center text-white text-2xl font-semibold rounded-2xl outline-none transition-all focus:ring-2 focus:ring-white/40 border-2"
+                className="w-15 h-15 text-center text-white text-2xl font-semibold rounded-2xl outline-none transition-all focus:ring-2 focus:ring-white/40 border-2"
                 style={{
                   background: 'rgba(79, 79, 79, 1)',
                   borderColor: digit
@@ -113,23 +145,24 @@ export default function VerifyOtpPage() {
           </div>
 
           {/* Verify Button */}
-          <AuthButton type="submit">Verify OTP</AuthButton>
+          <AuthButton type="submit">Verify & Continue</AuthButton>
 
           {/* Resend Link */}
-          <div className="flex justify-between items-center">
+          <div className="flex justify-end items-center">
             <p
               className="text-white/80"
               style={{
                 fontFamily: 'Avenir Next, sans-serif',
                 fontWeight: 400,
                 fontSize: '16px',
+                marginRight: '8px',
               }}
             >
-              Haven't received OTP yet?
+              Didn’t receive the code?{' '}
             </p>
             <button
               type="button"
-              className="text-white/60 hover:text-white transition-colors"
+              className="text-white/60 hover:text-white transition-colors cursor-pointer"
               style={{
                 fontFamily: 'Avenir Next, sans-serif',
                 fontWeight: 400,
